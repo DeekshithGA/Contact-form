@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Ultimate Feature-rich Contact Form</title>
+<link rel ="stylesheet" href="style.css">
+ <script defer src="script.js"></script>
+</head>
+<body data-theme="dark">
+  <div class="card" role="region" aria-labelledby="contact-title">
+    <div class="row">
+      <div class="title">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden>
+          <rect x="2" y="3" width="20" height="14" rx="2" stroke="white" stroke-opacity=".12" stroke-width="1.2" />
+          <path d="M3 7l8 6 7-6" stroke="white" stroke-opacity=".12" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div>
+          <h1 id="contact-title">Contact — Portfolio Form</h1>
+          <div class="subtitle">Glassmorphic, validated & feature-packed — try it out!</div>
+        </div>
+      </div>
+
+      <div class="toggle">
+        <button id="themeToggle" title="Toggle light / dark">Toggle Theme</button>
+      </div>
+    </div>
+
+    <div class="progress-wrap" aria-hidden="true" style="margin-bottom:12px;">
+      <div class="progress-bar" id="progressBar" style="width:0%"></div>
+    </div>
+
+    <div class="content">
+      <!-- FORM -->
+      <form id="contactForm" novalidate autocomplete="off" aria-describedby="helpText">
+        <!-- Name -->
+        <div class="field">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden>
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4z" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M4 20c0-3.3137 2.6863-6 6-6h4c3.3137 0 6 2.6863 6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+          <input id="name" type="text" placeholder=" " maxlength="40" aria-describedby="nameError" />
+          <label class="label" for="name">Your name</label>
+        </div>
+        <div class="error" id="nameError" aria-live="polite"></div>
+
+        <!-- Email -->
+        <div class="field">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden>
+            <path d="M3 6.5v11a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-11" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M21 6.5l-9 6-9-6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <input id="email" type="email" placeholder=" " maxlength="64" aria-describedby="emailError" />
+          <label class="label" for="email">Email address</label>
+        </div>
+        <div class="error" id="emailError" aria-live="polite"></div>
+
+        <!-- Message -->
+        <div class="field" style="align-items:flex-start;">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden style="top:22px;">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <textarea id="message" placeholder=" " maxlength="250" aria-describedby="messageError"></textarea>
+          <label class="label" for="message">Your message</label>
+        </div>
+
+        <div class="char-row" style="align-items:center;">
+          <div class="small meta-row"><span id="helpText" class="small">We won't send — demo only.</span></div>
+          <div style="display:flex; gap:10px; align-items:center;">
+            <div class="char-count" id="charCount">250 chars left</div>
+            <div class="word-count" id="wordCount">0 words</div>
+          </div>
+        </div>
+        <div class="error" id="messageError" aria-live="polite"></div>
+
+        <!-- Attachment -->
+        <label for="fileInput" class="small" style="margin-top:6px;color:var(--muted);">Attach file (jpg, png, pdf, doc) — max 2MB</label>
+        <div class="field" style="align-items:center;">
+          <input id="fileInput" type="file" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx" />
+        </div>
+        <div class="file-info" id="fileInfo" aria-live="polite">No file selected</div>
+
+        <!-- Controls -->
+        <div class="controls" style="margin-top:6px;">
+          <button type="button" class="btn" id="saveDraft">Save Draft</button>
+          <button type="button" class="btn" id="clearDraft">Clear Draft</button>
+          <button type="submit" class="btn primary" id="submitBtn" aria-live="polite">
+            Send
+            <span class="loader" id="btnLoader" style="display:none;"></span>
+          </button>
+        </div>
+      </form>
+
+      <!-- RIGHT INFO / PREVIEW -->
+      <div class="info" aria-hidden="false">
+        <div><strong>Live preview</strong></div>
+        <div class="preview" id="livePreview">Nothing typed yet — start writing and watch updates.</div>
+        <div style="margin-top:12px;">
+          <div class="small"><strong>Features:</strong></div>
+          <ul style="margin:8px 0 0 18px; color:var(--muted)">
+            <li>Floating labels & icons</li>
+            <li>Live validation & progress bar</li>
+            <li>LocalStorage draft saving</li>
+            <li>Auto-focus behaviours & loading animation</li>
+            <li>Glassmorphism & theme toggle (persisted)</li>
+            <li>Attachment upload, char & word counter, confetti</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- modal : generic (reuse for success + confirm) -->
+  <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal" role="document" aria-labelledby="modalTitle">
+      <h3 id="modalTitle">Heading</h3>
+      <p id="modalMsg">Message goes here.</p>
+      <div style="display:flex; gap:8px; justify-content:flex-end;">
+        <button class="btn" id="modalCancel" style="display:none;">Cancel</button>
+        <button class="btn" id="modalOk">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <button class="top-btn" id="topBtn" aria-label="Back to top">Top</button>
+
+  <!-- confetti canvas -->
+  <canvas id="confettiCanvas" aria-hidden="true"></canvas>
+
+</body>
+</html>
